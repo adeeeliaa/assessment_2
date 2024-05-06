@@ -13,15 +13,15 @@ if (!$conn) {
 }
 
 // Validasi input
-if (!isset($_POST['id']) || empty($_POST['id'])) {
+if (!isset($_GET['id']) || empty($_GET['id'])) {
     echo "'id' tidak valid.";
     exit;
 }
 
-$id = intval($_POST['id']);
+$id = intval($_GET['id']);
 
-// Hapus obat dari database
-$sql = "DELETE FROM produk WHERE id= = id";
+// Hapus produk dari database
+$sql = "DELETE FROM produk WHERE id = $id"; // Perbaikan pada query DELETE
 $result = mysqli_query($conn, $sql);
 
 // Periksa hasil penghapusan

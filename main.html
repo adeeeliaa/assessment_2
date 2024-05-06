@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Harvest</title>
+    <title>Green Hravest</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
@@ -54,7 +54,7 @@
             row += '<td>' + product.stok + '</td>';
 
             // Add a delete button for each product
-            row += '<td><button class="delete-btn" data-id="' + product.id_produk + '">Hapus</button></td>';
+            row += '<td><button class="delete-btn" data-id="' + product.id + '">Hapus</button></td>';
             row += '</tr>';
 
             $('#produk-table tbody').append(row);
