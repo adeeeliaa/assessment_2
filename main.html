@@ -60,6 +60,27 @@
             $('#produk-table tbody').append(row);
         });
     }
+
+        // Menghapus data ketika tombol hapus diklik
+        $(document).on("click", ".delete-btn", function() {
+        var id = $(this).data('id');
+        $.ajax({
+            type: "GET",
+            url: "hapus.php?id=" + id,
+            success: function(response) {
+                alert(response); // Menampilkan pesan hasil penghapusan
+                // Panggil kembali data setelah penghapusan
+                $.ajax({
+                    type: "GET",
+                    url: "data.php",
+                    dataType: "json",
+                    success: function(data) {
+                        tampilkanData(data); // Menampilkan data yang telah diperbarui
+                    }
+                });
+            }
+        });
+    });
     </script>
 
     <style>
