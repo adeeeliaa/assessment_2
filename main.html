@@ -40,6 +40,42 @@
             }
         });
     });
+
+    function tampilkanData(data) {
+        // Clear existing table content
+        $('#produk-table tbody').empty();
+
+        // Populate the table with product data
+        $.each(data, function(index, product) {
+            var row = '<tr>';
+            row += '<td>' + product.nama_produk + '</td>';
+            row += '<td>' + product.harga_produk + '</td>';
+            row += '<td>' + product.deskripsi_produk + '</td>';
+            row += '<td>' + product.stok + '</td>';
+
+            // Add a delete button for each product
+            row += '<td><button class="delete-btn" data-id="' + product.id_produk + '">Hapus</button></td>';
+            row += '</tr>';
+
+            $('#produk-table tbody').append(row);
+        });
+    }
+    </script>
+
+    <style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    </style>
     </script>
 </body>
 </html>
