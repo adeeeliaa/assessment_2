@@ -16,7 +16,7 @@
                     <th>Harga</th>
                     <th>Deskripsi</th>
                     <th>Stok</th>
-                    <th>Aksi</th>
+                    <th>Hapus</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,62 +40,6 @@
             }
         });
     });
-
-    function tampilkanData(data) {
-        // Clear existing table content
-        $('#produk-table tbody').empty();
-
-        // Populate the table with product data
-        $.each(data, function(index, product) {
-            var row = '<tr>';
-            row += '<td>' + product.nama_produk + '</td>';
-            row += '<td>' + product.harga_produk + '</td>';
-            row += '<td>' + product.deskripsi_produk + '</td>';
-            row += '<td>' + product.stok + '</td>';
-
-            // Add a delete button for each product
-            row += '<td><button class="delete-btn" data-id="' + product.id_produk + '">Hapus</button></td>';
-            row += '</tr>';
-
-            $('#produk-table tbody').append(row);
-        });
-    }
-
-    // Menghapus data ketika tombol hapus diklik
-    $(document).on("click", ".delete-btn", function() {
-        var id = $(this).data('id');
-        $.ajax({
-            type: "GET",
-            url: "hapus.php?id=" + id,
-            success: function(response) {
-                alert(response); // Menampilkan pesan hasil penghapusan
-                // Panggil kembali data setelah penghapusan
-                $.ajax({
-                    type: "GET",
-                    url: "data.php",
-                    dataType: "json",
-                    success: function(data) {
-                        tampilkanData(data); // Menampilkan data yang telah diperbarui
-                    }
-                });
-            }
-        });
-    });
     </script>
-
-    <style>
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-    th, td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: center;
-    }
-    th {
-        background-color: #f2f2f2;
-    }
-    </style>
 </body>
 </html>
